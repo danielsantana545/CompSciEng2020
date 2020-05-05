@@ -1,4 +1,4 @@
-var priorTime = "00:01";
+var priorTime = null;
 
 $(document).ready(function(){
     //define interval function
@@ -7,22 +7,38 @@ $(document).ready(function(){
     setInterval(function(){updateTime()},10000);
 });
 
+function timeEdit(){//called when user manual changes tie
+    priorTime = getCurrentTime();
+}
+
 function updateTime(){
-    var d = new Date();
-    var h = formatTime(d.getHours());
-    var m = formatTime(d.getMinutes());
-    var s = h + ":" +m;
+    var s = getCurrentTime();
     var $time = $("#timeInput");
     var v = $time.val();
-    if($time.val() != s){
-        console.log("updating time. " + h + ":" + m);
+    if(priorTime !== null){ //this block keeps the update from undoing manual edits
+        if(priorTime != s){
+            console.log("updating time. " + s);
+            $time.val(s);
+            priorTime = null; //setting priorTime to null
+        }
+    }
+    else if($time.val() != s){
+        console.log("updating time. " + s);
         $time.val(s);
     }
 }
 
-function formatTime(x){
-    if(x<10){
-        x = "0" + x;
+function getCurrentTime(){ //returns current 24 hour time as hh:mm
+    function formatTime(x){ //makes sure all times are 2 digit stings
+        if(x<10){
+            x = "0" + x;
+        }
+        return x;
     }
-    return x;
+
+    var d = new Date();
+    var h = formatTime(d.getHours());
+    var m = formatTime(d.getMinutes());
+    return h + ":" +m;
 }
+
