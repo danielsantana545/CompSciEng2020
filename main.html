@@ -1,42 +1,52 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="studentList.js" type="text/javascript"></script>
         <style>
-            .mainArea {
-                float: left;
-            }
             h2 {
              font-family: Verdana, sans-serif;
             }
 
+            
+
+            .inputContainer td{
+                height: 25px;
+            }
+            
+            .dataInput{
+                display: inline-block;
+                height:100%;
+            }
+
             .blueButton {
-                background-color: blue; /* Green */
+                background-color: #008cff;
                 border: none;
                 color: white;
-                padding: 10px 16px;
                 text-align: center;
                 text-decoration: none;
                 display: inline-block;
-                font-size: 16px;
+                font-size: auto;
+                height: 100%;
             }
+            
 
-            .inputBox {
-                padding: 10px 16px;
-            }
-
-            .input {
-                display: inline-block;
-            }
         </style>
     </head>
     <body>
         <h2>[insertname] tutoring</h2>
         <form name="mainForm" class="mainArea">
-            <input type="text" name="fname">
-            <input type="submit" value="Enter" class="blueButton">
+            <table>
+                <tr class="inputContainer">
+                    <td><input type="text" name="studentName" placeholder="Name" class="dataInput"></td>
+                    <td><input type="time" id="timeInput" value=01:11 name="timeIn" class="dataInput" oninput="timeEdit()"></td>
+                    <td><select id="classList" ></select></td>
+                    <td><input type="submit" value="Enter" class="blueButton"></td>
+                </tr>
+            </table>
         </form>
         <table class="studentTable">
 
         </table>
-</body>
+    </body>
 </html>
