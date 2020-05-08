@@ -29,11 +29,37 @@
                 font-size: auto;
                 height: 100%;
             }
-            
+
+            .studentRow{
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-items: stretch;
+            }
+
+            .studentTable td{
+                border: 1px solid black;
+            }
+
+            .studentTable input[type="image"]{
+                
+            }
+            .studentTable textarea{
+                resize: none;
+            }
+            .studentTable textarea{
+                resize: none;
+            }
+            .studentTable input[type="time"]{
+                flex-grow: 2;
+            }
 
         </style>
     </head>
     <body>
+        <div class="main">
+
+
         <h2>[insertname] tutoring</h2>
         <form name="mainForm" class="mainArea">
             <table>
@@ -46,7 +72,25 @@
             </table>
         </form>
         <table class="studentTable">
-
+            <tr>
+                <td class="studentRow">
+                    <p>john doe</p>
+                    <textarea hight="%100" cols="50">
+                    </textarea><input type="time">
+                    <input type="image" src="https://img.icons8.com/ultraviolet/40/000000/edit.png"/>
+                    <input type="image" src="https://img.icons8.com/ultraviolet/40/000000/checked-2.png"/>
+                </td>
+                <td class="studentRow">
+                    <h4>john doe</h4>
+                </td>
+            </tr>
         </table>
+        <!--
+        <img src="https://img.icons8.com/ultraviolet/40/000000/edit.png"/>
+        <img src="https://img.icons8.com/ultraviolet/40/000000/checked-2.png"/>
+        <a href="https://icons8.com/icon/41647/edit">Edit icon by Icons8</a>
+        <a href="https://icons8.com/icon/41769/tick-box">Tick Box icon by Icons8</a>
+        -->
+        </div>
     </body>
 </html>
