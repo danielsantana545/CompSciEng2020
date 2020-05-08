@@ -1,0 +1,28 @@
+.main{
+    max-width: 1000px;
+    margin: auto
+}
+
+h2 {
+    font-family: Verdana, sans-serif;
+}
+   
+.inputContainer td{
+    height: 25px;
+}
+   
+.dataInput{
+    display: inline-block;
+     height:100%;
+}
+
+.blueButton {
+    background-color: #008cff;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: auto;
+    height: 100%;
+}

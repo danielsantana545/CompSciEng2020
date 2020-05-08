@@ -1,0 +1,23 @@
+.studentRow{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+}
+
+.studentTable td{
+    border: 1px solid black;
+}
+
+studentTable input[type="image"]{
+    
+}
+.studentTable textarea{
+    resize: none;
+}
+.studentTable textarea{
+    resize: none;
+}
+.studentTable input[type="time"]{
+    flex-grow: 2;
+}

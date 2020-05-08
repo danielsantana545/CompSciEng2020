@@ -3,58 +3,8 @@
     <head>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
         <script src="studentList.js" type="text/javascript"></script>
-        <style>
-            h2 {
-             font-family: Verdana, sans-serif;
-            }
-
-            
-
-            .inputContainer td{
-                height: 25px;
-            }
-            
-            .dataInput{
-                display: inline-block;
-                height:100%;
-            }
-
-            .blueButton {
-                background-color: #008cff;
-                border: none;
-                color: white;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: auto;
-                height: 100%;
-            }
-
-            .studentRow{
-                display: flex;
-                flex-direction: row;
-                flex-wrap: nowrap;
-                align-items: stretch;
-            }
-
-            .studentTable td{
-                border: 1px solid black;
-            }
-
-            .studentTable input[type="image"]{
-                
-            }
-            .studentTable textarea{
-                resize: none;
-            }
-            .studentTable textarea{
-                resize: none;
-            }
-            .studentTable input[type="time"]{
-                flex-grow: 2;
-            }
-
-        </style>
+        <link rel="stylesheet" type="text/css" href="styleSheets/mainformat.css">
+        <link rel="stylesheet" type="text/css" href="styleSheets/tableformat.css">
     </head>
     <body>
         <div class="main">
@@ -71,7 +21,7 @@
                 </tr>
             </table>
         </form>
-        <table class="studentTable">
+        <table class="studentTable" width=100%>
             <tr>
                 <td class="studentRow">
                     <p>john doe</p>
