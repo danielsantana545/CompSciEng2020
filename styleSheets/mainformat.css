@@ -1,6 +1,18 @@
+html,body{
+    height: 100%;
+}
+
+body{
+    background-color: #fffae2;
+}
+
 .main{
     max-width: 1000px;
-    margin: auto
+    margin: auto;
+    background-color: #ffffff;
+    height: 100%;
+    padding-top: 0px;
+    padding-bottom:0px;
 }
 
 h2 {
@@ -25,4 +37,11 @@ h2 {
     display: inline-block;
     font-size: auto;
     height: 100%;
+}
+
+.studentRow{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
 }

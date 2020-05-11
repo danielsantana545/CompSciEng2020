@@ -1,23 +1,32 @@
-.studentRow{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: stretch;
+
+.studentTable{
+    width: 95%;
+    margin-left: 20px;
 }
 
 .studentTable td{
     border: 1px solid black;
 }
 
-studentTable input[type="image"]{
-    
+.studentTable input[type="image"]{
+    min-width: 50px;
+    max-height: 50px;
 }
+
 .studentTable textarea{
     resize: none;
-}
-.studentTable textarea{
-    resize: none;
+    max-height: 50px;
 }
 .studentTable input[type="time"]{
-    flex-grow: 2;
+    
+}
+
+.studentTable p{
+    flex-grow: 3;
+}
+
+.studentTable p, .studentTable input, .studentTable textarea{
+    max-height: 50px;
+    padding-top: 0%;
+    padding-bottom: 0%;
 }
