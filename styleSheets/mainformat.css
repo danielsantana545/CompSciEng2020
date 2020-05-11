@@ -1,0 +1,47 @@
+html,body{
+    height: 100%;
+}
+
+body{
+    background-color: #fffae2;
+}
+
+.main{
+    max-width: 1000px;
+    margin: auto;
+    background-color: #ffffff;
+    height: 100%;
+    padding-top: 0px;
+    padding-bottom:0px;
+}
+
+h2 {
+    font-family: Verdana, sans-serif;
+}
+   
+.inputContainer td{
+    height: 25px;
+}
+   
+.dataInput{
+    display: inline-block;
+     height:100%;
+}
+
+.blueButton {
+    background-color: #008cff;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: auto;
+    height: 100%;
+}
+
+.studentRow{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+}
