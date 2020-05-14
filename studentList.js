@@ -1,4 +1,4 @@
-var priorTime = null;
+var priorTime = null;//used for allowing the user to edit the time
 
 $(document).ready(function(){
     //define interval function
@@ -7,11 +7,11 @@ $(document).ready(function(){
     setInterval(function(){updateTime()},10000);
 });
 
-function timeEdit(){//called when user manual changes tie
+function timeEdit(){//called when user manual changes time
     priorTime = getCurrentTime();
 }
 
-function updateTime(){
+function updateTime(){ //updates the time on the checkin time
     var s = getCurrentTime();
     var $time = $("#timeInput");
     var v = $time.val();
@@ -41,4 +41,15 @@ function getCurrentTime(){ //returns current 24 hour time as hh:mm
     var m = formatTime(d.getMinutes());
     return h + ":" +m;
 }
+
+function createStudentObject(name, timeIn, course){
+    return studentEvent = {
+        name:name,
+        timeIn:timeIn,
+        course:course,
+        timeOut:null,
+        notes:null
+    };
+}
+
 
