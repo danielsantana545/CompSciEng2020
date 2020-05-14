@@ -1,0 +1,93 @@
+var priorTime = null;
+
+function updateTime() {
+    var s = getCurrentTime();
+    var $time = $("timeInput");
+    var v = $time.val();
+    if (priorTime !== null) { //this block keeps the update from undoing manual edits
+        if (priorTime != s) {
+            console.log("updating time. " + s);
+            $time.val(s);
+            priorTime = null; //setting priorTime to null
+            document.getElementById("testing");
+        }
+    }
+    else if ($time.val() != s) {
+        console.log("updating time. " + s);
+        $time.val(s);
+    }
+}
+function changeTime(){
+    priorTime = getCurrentTime();
+
+}
+function getCurrentTime() { //returns current 24 hour time as hh:mm
+  function formatTime(x) { //makes sure all times are 2 digit stings
+       if (x < 10) {
+            x = "0" + x;
+        }
+        return x;
+    }
+
+    
+
+
+    var d = new Date();
+    var h = d.getHours();
+    var m = d.getMinutes(); 
+    var h12 =h;
+    var am = "AM";
+    if ( h12>= 12){
+        h12 = h - 12;
+        am = "PM"
+    }
+    if (h12 == 0){
+        h12 =12;
+    }
+    m = m < 10 ? "0" + m : m;
+    var time = new RegExp(h12 + ":" + m);
+    var x = h + ":"+ m;
+    x += " " + am;
+    console.log(h12 + ":" + m + " " + am);
+    return x;
+/*      var hours = date.getHours();
+     var minutes = date.getMinutes();
+     var ampm = hours >= 12 ? 'pm' : 'am';
+     hours = hours % 12;
+     hours = hours ? hours : 12; // the hour '0' should be '12'
+     minutes = minutes < 10 ? '0' + minutes : minutes;
+     var strTime = hours + ':' + minutes + ' ' + ampm;
+    console.log(strTime);
+     return strTime; */
+ 
+}
+function addTable() {
+    var addToTable = document.getElementById("table");
+    var row = addToTable.insertRow();
+    var studentName = row.insertCell();
+    var timeIn = row.insertCell();
+    var className = row.insertCell();
+
+    studentName.innerHTML = document.getElementById("studentName").value;
+    timeIn.innerHTML = document.getElementById("timeInput").value;
+    className.innerHTML = document.getElementById("classList").value;
+
+}
+
+function updateName() {
+
+    var name = document.getElementById("studentName").value;
+
+    console.log(name);
+
+}
+/*
+function getData(){
+
+}
+function addData(){
+
+}
+function deleteData(){
+    localStorage.getItem("localData");
+}*/
