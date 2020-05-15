@@ -8,6 +8,7 @@ var priorTime = null;//used for allowing the user to edit the time
 
 
 $(document).ready(function(){
+    reloadTable();
     //define interval function
     document.getElementById("timeInput").value = "00:01";
     updateTime();
@@ -51,11 +52,11 @@ function getCurrentTime(){ //returns current 24 hour time as hh:mm
 
 function reloadTable(){
 
+    addToTable(createStudentObject("person","05:21","database"))
 
-    
     function addToTable(studentEvent){
         var tableRow = "<td class='studentRow'><p>" + studentEvent.name + "</p>" + notes + timeOut + editButton + submitButton + "</td>";
-        $(".studentTable tr:last").after(tableRow);
+        $(".studentTable td:last").after(tableRow);
     }
 }
 
