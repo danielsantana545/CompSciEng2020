@@ -1,11 +1,22 @@
 
-.studentTable{
+.studentTable{ /*overall student table*/
     width: 95%;
     margin-left: 20px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border-bottom: 1px solid black;
 }
 
-.studentTable td{
+.studentTable tr, .studentTable td{
+    padding: 0;
+}
+
+.studentTable td{ /*cell boarder color*/
     border: 1px solid black;
+    border-bottom-width: 0px;
+}
+.studentTable input[type="text"]{
+    flex-grow: 2;
 }
 
 .studentTable input[type="image"]{
@@ -13,16 +24,8 @@
     max-height: 50px;
 }
 
-.studentTable textarea{
-    resize: none;
-    max-height: 50px;
-}
-.studentTable input[type="time"]{
-    
-}
-
 .studentTable p{
-    flex-grow: 3;
+    flex-grow: 2;
 }
 
 .studentTable p, .studentTable input, .studentTable textarea{

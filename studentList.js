@@ -52,8 +52,9 @@ function getCurrentTime(){ //returns current 24 hour time as hh:mm
 
 function reloadTable(){
 
-    addToTable(createStudentObject("adom","05:21","database"))
-    addToTable(createStudentObject("beetrice","05:21","database"))
+    addToTable(createStudentObject("adom","05:21","database"));
+    addToTable(createStudentObject("beetrice","05:21","database"));
+    addToTable(createStudentObject("pissboi","05:21","database"))
 
     function addToTable(studentEvent){
         var tableRow = "<tr><td class='studentRow'><p>" + studentEvent.name + "</p>" + notes + timeOut + editButton + submitButton + "</td></tr>";
