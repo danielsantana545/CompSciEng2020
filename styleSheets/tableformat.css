@@ -4,7 +4,7 @@
     margin-left: 20px;
     border-collapse: collapse;
     border-spacing: 0;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid black;  /*this is here so that there'a always a bottom line*/
 }
 
 .studentTable tr, .studentTable td{
