@@ -5,7 +5,7 @@ const editButton = '<input type="image" src="https://img.icons8.com/ultraviolet/
 
 
 var priorTime = null;//used for allowing the user to edit the time
-
+var studentArray = [];
 
 $(document).ready(function(){
     reloadTable();
@@ -51,14 +51,23 @@ function getCurrentTime(){ //returns current 24 hour time as hh:mm
 }
 
 function reloadTable(){
+    clearTable();
+    studentArray.forEach(addToTable);
 
-    addToTable(createStudentObject("adom","05:21","database"));
-    addToTable(createStudentObject("beetrice","05:21","database"));
-    addToTable(createStudentObject("pissboi","05:21","database"))
+    function clearTable(){
+        $(".studentTable").find("tr").remove();
+    }
 
-    function addToTable(studentEvent){
-        var tableRow = "<tr><td class='studentRow'><p>" + studentEvent.name + "</p>" + notes + timeOut + editButton + submitButton + "</td></tr>";
-        $(".studentTable tr:last").after(tableRow);
+    function addToTable(item){
+        var tableRow = "<tr><td class='studentRow'><p>" + item.name + "</p>" + notes + timeOut + editButton + submitButton + "</td></tr>";
+        var trTst = $(".studentTable tr:last");
+        if($(".studentTable tr:last").length !== 0){
+            $(".studentTable tr:last").after(tableRow);
+        }
+        else {
+            $(".studentTable").append(tableRow);
+        }
+        
     }
 }
 
