@@ -28,6 +28,12 @@
     flex-grow: 2;
 }
 
+.studentTable .notes{
+    resize: none;
+    flex-grow: 2;
+    font-size: 18px;
+}
+
 .studentTable p, .studentTable input, .studentTable textarea{
     max-height: 50px;
     padding-top: 0%;
