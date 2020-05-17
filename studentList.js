@@ -9,6 +9,8 @@ var studentArray = [];
 
 $(document).ready(function(){
     studentArray.push(createStudentObject("pisswank","07:33","database"));
+    studentArray.push(createStudentObject("alpha nerd","07:33","database"));
+    studentArray.push(createStudentObject("rojer","07:33","database"));
     reloadTable();
 
     //Ready time functions + interval
@@ -81,6 +83,22 @@ function createStudentObject(name, timeIn, course){
         timeOut:null,
         notes:null
     };
+}
+
+function sendToDatabase(studentEvent){
+    $.post("insertInfo.php",
+        {
+            student_Name: studentEvent.name,
+            time_In : studentEvent.timeIn,
+            class_name : studentEvent.course,
+            time_Out : studentEvent.timeOut,
+            notes : studentEvent.notes
+        },
+        function(data) {
+           console.log(data
+            )
+        }
+     );
 }
 
 
