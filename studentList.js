@@ -1,4 +1,4 @@
-const notes = '<input type="text" class="notes">';
+const notes = '<textarea placeholder="notes" class="notes"></textarea>';
 const timeOut = '<input type="time" class="timeOut">';
 const submitButton = '<input type="image" src="https://img.icons8.com/ultraviolet/40/000000/edit.png" class="editButton"/>';
 const editButton = '<input type="image" src="https://img.icons8.com/ultraviolet/40/000000/checked-2.png" class="submitButton"/>';
@@ -8,8 +8,10 @@ var priorTime = null;//used for allowing the user to edit the time
 var studentArray = [];
 
 $(document).ready(function(){
+    studentArray.push(createStudentObject("pisswank","07:33","database"));
     reloadTable();
-    //define interval function
+
+    //Ready time functions + interval
     document.getElementById("timeInput").value = "00:01";
     updateTime();
     setInterval(function(){updateTime()},10000);
