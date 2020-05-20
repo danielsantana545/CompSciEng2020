@@ -86,7 +86,7 @@ function addStudent() {//called on form submit, adds student to list
     //getting all html objects needed
     var $getName = $("#studentName");
     var $getTime = $("#timeInput");
-    var $getClass = $("#classList");
+    var $getClass = $("#slctCourse");
     //checks if the student in question is already present
     var check = studentArray.find(function (post, index) {
         if (post.name == $getName.val()) {
