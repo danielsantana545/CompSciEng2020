@@ -1,29 +1,31 @@
-const notes = '<textarea placeholder="notes" class="notes"></textarea>';
+const notesBox = '<textarea placeholder="notes" class="notes">';
 const timeOut = '<input type="time" class="timeOut">';
 const submitButton = '<input type="image" src="https://img.icons8.com/ultraviolet/40/000000/edit.png" class="editButton"/>';
-const editButton = '<input type="image" src="https://img.icons8.com/ultraviolet/40/000000/checked-2.png" class="submitButton"/>';
+const editButton = '<input type="image" onclick="return checkOut(this);" src="https://img.icons8.com/ultraviolet/40/000000/checked-2.png" class="submitButton"/>';
 
 var studentArray = [];
 
 $(document).ready(function(){
-    studentArray.push(createStudentObject("pisswank","07:33","database"));
-    studentArray.push(createStudentObject("alpha nerd","07:33","database"));
-    studentArray.push(createStudentObject("rojer","07:33","database"));
-    reloadTable();
 });
 
 
-
-function reloadTable(){
+function reloadTable(){ //deletes annd reloads html table.
     clearTable();
     studentArray.forEach(addToTable);
+
+    $("textarea").blur(function(){ //saves notes to array when cclicking out 
+        var sName = $(this).closest("td").children("p").text();
+        var sNotes = $(this).val();
+        console.log($(this))
+        saveNotes(sName, sNotes)
+    });
 
     function clearTable(){
         $(".studentTable").find("tr").remove();
     }
 
     function addToTable(item){
-        var tableRow = "<tr><td class='studentRow'><p>" + item.name + "</p>" + notes + timeOut + editButton + submitButton + "</td></tr>";
+        var tableRow = "<tr><td class='studentRow'><p>" + item.name + "</p>" + notesBox + item.notes +"</textarea>" + timeOut + submitButton + editButton  + "</td></tr>";
         var trTst = $(".studentTable tr:last");
         if($(".studentTable tr:last").length !== 0){
             $(".studentTable tr:last").after(tableRow);
@@ -31,21 +33,61 @@ function reloadTable(){
         else {
             $(".studentTable").append(tableRow);
         }
-        
     }
 }
 
-function createStudentObject(name, timeIn, course){
-    return studentEvent = {
-        name:name,
-        timeIn:timeIn,
-        course:course,
-        timeOut:null,
-        notes:null
-    };
+function checkOut(domObject){ //called when check is clicked
+    alert("piss");
+    var sName = $(this).closest("td").children("p").text();
+    var student = studentArray.find(function(post,index){
+        if(post.name ==sName){
+            return true;
+        }
+    });
+
+    if(student != undefined){
+        sendToDatabase(student);
+    }
 }
 
+
+function saveNotes(sName, note){
+    var student = studentArray.find(function(post,index){
+        if(post.name ==sName){
+            return true;
+        }
+    });
+
+    if(student != undefined){
+        student.notes = note
+    }
+}
+
+function addStudent(){//called on form submit, adds student to list
+    //getting all html objects needed
+    var $getName = $("#studentName");
+    var $getTime = $("#timeInput");
+    var $getClass = $("#classList");
+    //checks if the student in question is already present
+    var check = studentArray.find(function(post,index){
+        if(post.name ==$getName.val()){
+            return true;
+        }
+    });
+    if(check != undefined){
+        alert("Error: student's names must be unique");
+        return;
+    }
+
+
+    var s = createStudentObject($getName.val(), $getTime.val(),$getClass.val())
+    studentArray.push(s);
+    reloadTable()
+}
+
+
 function sendToDatabase(studentEvent){
+    console.log("sending: " + studentEvent)
     $.post("insertInfo.php",
         {
             student_Name: studentEvent.name,
@@ -59,6 +101,16 @@ function sendToDatabase(studentEvent){
             )
         }
      );
+}
+
+function createStudentObject(name, timeIn, course){
+    return studentEvent = {
+        name:name,
+        timeIn:timeIn,
+        course:course,
+        timeOut:null,
+        notes: "" //this is. the best. patch ever.
+    };
 }
 
 
