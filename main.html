@@ -10,17 +10,18 @@
 </head>
 <body>
     <div class="main">
-        <h2>[insertname] tutoring</h2>
+        
         <form name="mainForm" class="mainArea" action="" onsubmit="addStudent();return false">
+            <h2><select id="slctTutor" name="tutorName"></select> tutoring</h2>
             <table>
                 <tr class="inputContainer">
                     <td><input type="text" id="studentName" placeholder="Name" class="dataInput"></td>
                     <td><input type="time" id="timeInput" value=01:11 name="timeIn" class="dataInput"
                             oninput="timeEdit()"></td>
-                    <td><select id="classList">
-                            <option value="database">database</option>
+                    <td><select name= "slctCourse" id="classList">
+                        <!--<option value="database">database</option>
                             <option value="java">java</option>
-                            <option value="capstone">capstone</option>
+                            <option value="capstone">capstone</option> -->
                         </select></td>
                     <td><input type="submit" value="Enter" class="blueButton"></td>
                 </tr>

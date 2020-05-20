@@ -1,3 +1,22 @@
+$(document).ready(function () {
+    $.getJSON("phpscripts/getCourses.php", success = function (data) {
+        var list = "";
+
+        for (var i = 0; i < data.length; i++) {
+            list += "<option value ='" + data[i].toLowerCase() + "'>" + data[i] + "</option>";
+        }
+        $("#slctCourse").append(list);
+    });
+    $.getJSON("phpscripts/tutorSelect.php", success = function (data) {
+        var list = "";
+
+        for (var i = 0; i < data.length; i++) {
+            list += "<option value ='" + data[i].toLowerCase() + "'>" + data[i] + "</option>";
+        }
+        $("#slctTutor").append(list);
+    });
+});
+
 const notesBox = '<textarea placeholder="notes" class="notes">';
 const timeOut = '<input type="time" class="timeOut">';
 const submitButton = '<input type="image" src="https://img.icons8.com/ultraviolet/40/000000/edit.png" class="editButton"/>';
@@ -88,7 +107,7 @@ function addStudent() {//called on form submit, adds student to list
 
 function sendToDatabase(studentEvent) {
     console.log("sending: " + studentEvent)
-    $.post("insertInfo.php",
+    $.post("phpscripts/insertInfo.php",
         {
             student_Name: studentEvent.name,
             time_In: studentEvent.timeIn,
