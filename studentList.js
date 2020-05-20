@@ -1,3 +1,22 @@
+$(document).ready(function () {
+    $.getJSON("phpscripts/getCourses.php", success = function (data) {
+        var list = "";
+
+        for (var i = 0; i < data.length; i++) {
+            list += "<option value ='" + data[i].toLowerCase() + "'>" + data[i] + "</option>";
+        }
+        $("#slctCourse").append(list);
+    });
+    $.getJSON("phpscripts/tutorSelect.php", success = function (data) {
+        var list = "";
+
+        for (var i = 0; i < data.length; i++) {
+            list += "<option value ='" + data[i].toLowerCase() + "'>" + data[i] + "</option>";
+        }
+        $("#slctTutor").append(list);
+    });
+});
+
 const notesBox = '<textarea placeholder="notes" class="notes">';
 const timeOut = '<input type="time" class="timeOut">';
 const submitButton = '<input type="image" src="https://img.icons8.com/ultraviolet/40/000000/edit.png" class="editButton"/>';
@@ -5,29 +24,29 @@ const editButton = '<input type="image" onclick="return checkOut(this);" src="ht
 
 var studentArray = [];
 
-$(document).ready(function(){
+$(document).ready(function () {
 });
 
 
-function reloadTable(){ //deletes annd reloads html table.
+function reloadTable() { //deletes annd reloads html table.
     clearTable();
     studentArray.forEach(addToTable);
 
-    $("textarea").blur(function(){ //saves notes to array when cclicking out 
+    $("textarea").blur(function () { //saves notes to array when cclicking out 
         var sName = $(this).closest("td").children("p").text();
         var sNotes = $(this).val();
         console.log($(this))
         saveNotes(sName, sNotes)
     });
 
-    function clearTable(){
+    function clearTable() {
         $(".studentTable").find("tr").remove();
     }
 
-    function addToTable(item){
-        var tableRow = "<tr><td class='studentRow'><p>" + item.name + "</p>" + notesBox + item.notes +"</textarea>" + timeOut + submitButton + editButton  + "</td></tr>";
+    function addToTable(item) {
+        var tableRow = "<tr><td class='studentRow'><p>" + item.name + "</p>" + notesBox + item.notes + "</textarea>" + timeOut + submitButton + editButton + "</td></tr>";
         var trTst = $(".studentTable tr:last");
-        if($(".studentTable tr:last").length !== 0){
+        if ($(".studentTable tr:last").length !== 0) {
             $(".studentTable tr:last").after(tableRow);
         }
         else {
@@ -36,81 +55,79 @@ function reloadTable(){ //deletes annd reloads html table.
     }
 }
 
-function checkOut(domObject){ //called when check is clicked
+function checkOut(domObject) { //called when check is clicked
     alert("piss");
     var sName = $(this).closest("td").children("p").text();
-    var student = studentArray.find(function(post,index){
-        if(post.name ==sName){
+    var student = studentArray.find(function (post, index) {
+        if (post.name == sName) {
             return true;
         }
     });
 
-    if(student != undefined){
+    if (student != undefined) {
         sendToDatabase(student);
     }
 }
 
 
-function saveNotes(sName, note){
-    var student = studentArray.find(function(post,index){
-        if(post.name ==sName){
+function saveNotes(sName, note) {
+    var student = studentArray.find(function (post, index) {
+        if (post.name == sName) {
             return true;
         }
     });
 
-    if(student != undefined){
+    if (student != undefined) {
         student.notes = note
     }
 }
 
-function addStudent(){//called on form submit, adds student to list
+function addStudent() {//called on form submit, adds student to list
     //getting all html objects needed
     var $getName = $("#studentName");
     var $getTime = $("#timeInput");
-    var $getClass = $("#classList");
+    var $getClass = $("#slctCourse");
     //checks if the student in question is already present
-    var check = studentArray.find(function(post,index){
-        if(post.name ==$getName.val()){
+    var check = studentArray.find(function (post, index) {
+        if (post.name == $getName.val()) {
             return true;
         }
     });
-    if(check != undefined){
+    if (check != undefined) {
         alert("Error: student's names must be unique");
         return;
     }
 
 
-    var s = createStudentObject($getName.val(), $getTime.val(),$getClass.val())
+    var s = createStudentObject($getName.val(), $getTime.val(), $getClass.val())
     studentArray.push(s);
     reloadTable()
 }
 
 
-function sendToDatabase(studentEvent){
+function sendToDatabase(studentEvent) {
     console.log("sending: " + studentEvent)
-    $.post("insertInfo.php",
+    $.post("phpscripts/insertInfo.php",
         {
             student_Name: studentEvent.name,
-            time_In : studentEvent.timeIn,
-            class_name : studentEvent.course,
-            time_Out : studentEvent.timeOut,
-            notes : studentEvent.notes
+            time_In: studentEvent.timeIn,
+            class_name: studentEvent.course,
+            time_Out: studentEvent.timeOut,
+            notes: studentEvent.notes
         },
-        function(data) {
-           console.log(data
+        function (data) {
+            console.log(data
             )
         }
-     );
+    );
 }
 
-function createStudentObject(name, timeIn, course){
+function createStudentObject(name, timeIn, course) {
     return studentEvent = {
-        name:name,
-        timeIn:timeIn,
-        course:course,
-        timeOut:null,
+        name: name,
+        timeIn: timeIn,
+        course: course,
+        timeOut: null,
         notes: "" //this is. the best. patch ever.
     };
 }
-
-
