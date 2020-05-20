@@ -62,6 +62,7 @@ function checkOut(domObject) { //called when check is clicked
     });
 
     if (student != undefined) {
+        student.timeOut = $(domObject).closest("td").children(".timeOut").val()
         console.log("checkout sending to database");
         sendToDatabase(student);
     }
@@ -115,9 +116,10 @@ function sendToDatabase(studentEvent) {
             notes: studentEvent.notes,
             tutor_name: studentEvent.tutor
         },
-        function (data) {
-            console.log(data
-            )
+        function (data, status) {
+            console.log("post has been run")
+            console.log(status);
+            console.log(data);
         }
     );
 }
