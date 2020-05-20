@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="studentList.js" type="text/javascript"></script>
-        <script src="timeUpdater.js" type="text/javascript"></script>
-        <link rel="stylesheet" type="text/css" href="styleSheets/mainformat.css">
-        <link rel="stylesheet" type="text/css" href="styleSheets/tableformat.css">
-    </head>
-    <body>
-        
-        <div class="main">
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"
+        charset="utf-8"></script>
+    <script src="studentList.js" type="text/javascript"></script>
+    <script src="timeUpdater.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="styleSheets/mainformat.css">
+    <link rel="stylesheet" type="text/css" href="styleSheets/tableformat.css">
+</head>
+<body>
+    <div class="main">
         <h2>[insertname] tutoring</h2>
-        <form name="mainForm" class="mainArea">
+        <form name="mainForm" class="mainArea" action="" onsubmit="addStudent();return false">
             <table>
                 <tr class="inputContainer">
-                    <td><input type="text" name="studentName" placeholder="Name" class="dataInput"></td>
-                    <td><input type="time" id="timeInput" value=01:11 name="timeIn" class="dataInput" oninput="timeEdit()"></td>
-                    <td><select id="classList" ></select></td>
+                    <td><input type="text" id="studentName" placeholder="Name" class="dataInput"></td>
+                    <td><input type="time" id="timeInput" value=01:11 name="timeIn" class="dataInput"
+                            oninput="timeEdit()"></td>
+                    <td><select id="classList">
+                            <option value="database">database</option>
+                            <option value="java">java</option>
+                            <option value="capstone">capstone</option>
+                        </select></td>
                     <td><input type="submit" value="Enter" class="blueButton"></td>
                 </tr>
             </table>
         </form>
         <table class="studentTable">
         </table>
-        </div>
-    </body>
+    </div>
+</body>
 </html>
