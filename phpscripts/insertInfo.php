@@ -1,13 +1,13 @@
 <?php
 require "opendb.php";
 
-if(isset($_POST['submitButton'])) {
+if(isset($_POST['student_Name'])) {
     $student_Name = $_POST['student_Name'];
     $time_In = $_POST['time_In'];
-    $course_name = $_POST['class_Name'];
+    $course_name = $_POST['course_Name'];
     $time_Out = $_POST['time_Out'];
     $notes = $_POST['notes'];
-    $tutor_name = $_POST['tutorName'];
+    $tutor_name = $_POST['tutor_Name'];
 
     $update_help ="UPDATE tutor SET days_worked = days_worked + 1 WHERE tutor_name ='$tutor_name'";
     $data = mysqli_query($link,$update_help);
