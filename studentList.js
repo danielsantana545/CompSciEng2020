@@ -24,10 +24,6 @@ const editButton = '<input type="image" onclick="return checkOut(this);" src="ht
 
 var studentArray = [];
 
-$(document).ready(function () {
-});
-
-
 function reloadTable() { //deletes annd reloads html table.
     clearTable();
     studentArray.forEach(addToTable);
