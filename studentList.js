@@ -111,10 +111,10 @@ function sendToDatabase(studentEvent) {
         {
             student_Name: studentEvent.name,
             time_In: studentEvent.timeIn,
-            class_name: studentEvent.course,
+            class_Name: studentEvent.course,
             time_Out: studentEvent.timeOut,
             notes: studentEvent.notes,
-            tutor_name: studentEvent.tutor
+            tutorName: studentEvent.tutor
         },
         function (data, status) {
             console.log("post has been run")

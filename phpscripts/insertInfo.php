@@ -1,7 +1,7 @@
 <?php
 require "opendb.php";
 
-if(isset($_POST['submitButton'])) {
+if(isset($_POST['student_Name'])) {
     $student_Name = $_POST['student_Name'];
     $time_In = $_POST['time_In'];
     $course_name = $_POST['class_Name'];
