@@ -1,3 +1,5 @@
+the slapped together code to start working on our respective parts of the project 
+
 var priorTime = null;
 
 function updateTime() {

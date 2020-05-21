@@ -1,4 +1,6 @@
-$(document).ready(function () {
+/* functions create to refernce php files to retrive data from the database
+                                   and to be displayed by the html file*/
+$(document).ready(function () { 
     $.getJSON("phpscripts/getCourses.php", success = function (data) {
         var list = "";
 
@@ -62,6 +64,7 @@ function checkOut(domObject) { //called when check is clicked
     });
 
     if (student != undefined) {
+        student.timeOut = $(domObject).closest("td").children(".timeOut").val()
         console.log("checkout sending to database");
         sendToDatabase(student);
     }
@@ -104,22 +107,36 @@ function addStudent() {//called on form submit, adds student to list
 }
 
 
-function sendToDatabase(studentEvent) {
+function sendToDatabase(studentEvent) {// sends the data to the database
     console.log("sending: " + studentEvent.name)
-    $.post("phpscripts/insertInfo.php",
+    $.post("phpscripts/insertInfo.php", //refrences the php file to finialize data being sent to specified database
         {
             student_Name: studentEvent.name,
             time_In: studentEvent.timeIn,
-            course_Name: studentEvent.course,
+            class_Name: studentEvent.course,
             time_Out: studentEvent.timeOut,
             notes: studentEvent.notes,
-            tutor_Name: studentEvent.tutor
+            tutorName: studentEvent.tutor
         },
-        function (data) {
-            console.log(data
-            )
+        function (data, status) {
+            console.log("post has been run")
+            console.log("status: " + status);
+            if(status === "success"){
+                deleteStudent(studentEvent);
+                reloadTable();
+            }
+            else{
+                alert("failed to post")
+            }
         }
     );
+}
+
+function deleteStudent(studentEvent){ //deletes the row after the data has been sent
+    const index = studentArray.indexOf(studentEvent);
+    if (index > -1) {
+        studentArray.splice(index, 1);
+    }
 }
 
 function createStudentObject(name, timeIn, course, tutor) {
