@@ -118,10 +118,23 @@ function sendToDatabase(studentEvent) {
         },
         function (data, status) {
             console.log("post has been run")
-            console.log(status);
-            console.log(data);
+            console.log("status: " + status);
+            if(status === "success"){
+                deleteStudent(studentEvent);
+                reloadTable();
+            }
+            else{
+                alert("failed to post")
+            }
         }
     );
+}
+
+function deleteStudent(studentEvent){
+    const index = studentArray.indexOf(studentEvent);
+    if (index > -1) {
+        studentArray.splice(index, 1);
+    }
 }
 
 function createStudentObject(name, timeIn, course, tutor) {
